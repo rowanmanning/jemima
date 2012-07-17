@@ -10,21 +10,27 @@ module.exports = jemima =
   hasProperty: (object, property) ->
     varg.isValidObjectArgument object
     varg.isValidPropertyArgument property
+    object[property] isnt undefined
 
   # Check whether an object has properties
   hasProperties: (object, properties) ->
     varg.isValidObjectArgument object
     varg.isValidPropertiesArgument properties
+    results = (jemima.hasProperty(object, property) for property in properties)
+    (false in results) is false
 
   # Check whether an object has a method
   hasMethod: (object, method) ->
     varg.isValidObjectArgument object
     varg.isValidPropertyArgument method, 'method'
+    typeof object[method] is 'function'
 
   # Check whether an object has methods
   hasMethods: (object, methods) ->
     varg.isValidObjectArgument object
     varg.isValidPropertiesArgument methods, 'methods'
+    results = (jemima.hasMethod(object, method) for method in methods)
+    (false in results) is false
 
 
 # Argument verification
