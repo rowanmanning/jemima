@@ -1,7 +1,6 @@
 {
     "name": "jemima",
     "version": "0.1.0",
-    "private": true,
     "homepage": "https://github.com/rowanmanning/jemima",
     "description": "A naïve little (puddle) duck typing library.",
     "keywords": [
