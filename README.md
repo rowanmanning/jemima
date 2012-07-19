@@ -9,10 +9,13 @@ A naïve little (puddle) duck typing library for Node.js
 Just install with `npm install jemima` or add it to your
 `package.json`.
 
+If you use a bundler like [Browserify][browserify], then Jemima
+will work just fine in-browser too.
+
 
 ## Usage ##
 
-You can use Jemima with Node.js (JavaScript or CoffeeScript):
+You can use Jemima with JavaScript or CoffeeScript:
 
 ```js
 var jemima = require('jemima');
@@ -118,5 +121,6 @@ Dual licensed under the [MIT][mit] or [GPL Version 2][gpl]
 licenses.
 
 
+[browserify]: https://github.com/substack/node-browserify
 [mit]: http://opensource.org/licenses/mit-license.php
 [gpl]: http://opensource.org/licenses/gpl-2.0.php
