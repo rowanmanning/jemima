@@ -36,7 +36,9 @@ string (the property we're testing for); it will return a
 boolean value indicating whether the object has the property:
 
 ```js
-var obj = {foo: 123};
+var obj = {
+    foo: 123
+};
 
 jemima.hasProperty(obj, 'foo'); // true
 jemima.hasProperty(obj, 'bar'); // false
@@ -52,7 +54,10 @@ return a boolean value indicating whether the object has *all*
 of the properties:
 
 ```js
-var obj = {foo: 123, bar: 456};
+var obj = {
+    foo: 123,
+    bar: 456
+};
 
 jemima.hasProperties(obj, ['foo', 'bar']); // true
 jemima.hasProperties(obj, ['foo', 'baz']); // false
@@ -69,7 +74,10 @@ return a boolean value indicating whether the object has the
 method:
 
 ```js
-var obj = {foo: function () {}, bar: 123};
+var obj = {
+    foo: function () {},
+    bar: 123
+};
 
 jemima.hasMethod(obj, 'foo'); // true
 jemima.hasMethod(obj, 'bar'); // false
@@ -86,7 +94,11 @@ testing for); it will return a boolean value indicating whether
 the object has *all* of the methods:
 
 ```js
-var obj = {foo: function () {}, bar: function () {}, baz: 123};
+var obj = {
+    foo: function () {},
+    bar: function () {},
+    baz: 123
+};
 
 jemima.hasMethods(obj, ['foo', 'bar']); // true
 jemima.hasMethods(obj, ['foo', 'baz']); // false
