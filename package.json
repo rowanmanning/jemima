@@ -1,7 +1,6 @@
 {
     "name": "jemima",
     "version": "0.2.0",
-    "homepage": "https://github.com/rowanmanning/jemima",
     "description": "A naïve little (puddle) duck typing library.",
     "keywords": [
         "duck",
@@ -11,10 +10,12 @@
         "typing"
     ],
 
+    "homepage": "https://github.com/rowanmanning/jemima",
     "repository": {
         "type": "git",
         "url": "https://github.com/rowanmanning/jemima.git"
     },
+    "bugs": "https://github.com/rowanmanning/jemima/issues",
 
     "author": {
         "name": "Rowan Manning",
