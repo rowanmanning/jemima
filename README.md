@@ -93,6 +93,37 @@ jemima.hasMethods(obj, ['foo', 'baz']); // false
 ```
 
 
+### jemima.matches ###
+
+This function tests whether an object has the specified
+properties and that the type of object stored in each property
+is as expected. You call it with an object (what we're testing)
+and a 'duck' (an object which specifies the expected properties
+and types); it will return a boolean value indicating whether
+all of the properties match:
+
+```js
+var duck = {
+    foo: 'string',
+    bar: 'function'
+};
+
+jemima.matches({
+    foo: 'bar',
+    bar: function () {}
+}, duck); // true
+
+jemima.matches({
+    foo: 'bar'
+}, duck); // false
+
+jemima.matches({
+    foo: 'bar',
+    bar: 'baz'
+}, duck); // false
+```
+
+
 ## Development ##
 
 In order to develop Jemima, you'll need to install the following

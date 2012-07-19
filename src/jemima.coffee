@@ -32,6 +32,13 @@ module.exports = jemima =
     results = (jemima.hasMethod(object, method) for method in methods)
     (false in results) is false
 
+  # Check whether an object's properties match those of another object
+  matches: (object, duck) ->
+    varg.isValidObjectArgument object
+    varg.isValidObjectArgument duck, 'duck'
+    results = (typeof object[property] is type for own property, type of duck)
+    (false in results) is false
+
 
 # Argument verification
 varg =
@@ -65,9 +72,9 @@ varg =
       if typeof value isnt 'string'
         throw new er.ArgumentTypeError "Invalid #{arg} argument, array of strings expected"
 
-  isValidObjectArgument: (object) ->
-    varg.notMissing object, 'object'
-    varg.isObject object, 'object'
+  isValidObjectArgument: (object, arg = 'object') ->
+    varg.notMissing object, arg
+    varg.isObject object, arg
 
   isValidPropertyArgument: (property, arg = 'property') ->
     varg.notMissing property, arg

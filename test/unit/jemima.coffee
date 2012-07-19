@@ -24,6 +24,9 @@ suite 'jemima module', ->
   test 'should have a `hasMethods` function', ->
     assert.isFunction jemima.hasMethods
 
+  test 'should have a `matches` function', ->
+    assert.isFunction jemima.matches
+
   suite '`hasProperty` function', ->
 
     test 'should not throw when called with correct arguments', ->
@@ -266,3 +269,43 @@ suite 'jemima module', ->
         assert.isTrue jemima.hasMethod.firstCall.calledWith(object, 'foo')
         assert.isTrue jemima.hasMethod.secondCall.calledWith(object, 'bar')
         assert.isTrue jemima.hasMethod.thirdCall.calledWith(object, 'baz')
+
+  suite '`matches` function', ->
+
+    test 'should not throw when called with correct arguments', ->
+      assert.doesNotThrow -> jemima.matches {}, {}
+
+    test 'should throw when called with a non-object first argument', ->
+      assert.throws ->
+        jemima.matches 123, {}
+      , er.ArgumentTypeError
+
+    test 'should throw when called with a non-object second argument', ->
+      assert.throws ->
+        jemima.matches {}, 123
+      , er.ArgumentTypeError
+
+    test 'should throw when called with a missing first argument', ->
+      assert.throws ->
+        jemima.matches undefined, {}
+      , er.ArgumentMissingError
+
+    test 'should throw when called with a missing second argument', ->
+      assert.throws ->
+        jemima.matches {}
+      , er.ArgumentMissingError
+
+    test 'should return `true` when the object has properties matching the types specified in the duck', ->
+      assert.isTrue jemima.matches {foo: 'bar', bar: (->)}, {foo: 'string', bar: 'function'}
+
+    test 'should return `true` when the object\'s prototype has properties matching the types specified in the duck', ->
+      class Foo
+        foo: 'bar'
+        bar: ->
+      assert.isTrue jemima.matches new Foo, {foo: 'string', bar: 'function'}
+
+    test 'should return `false` when one or more properties specified in the duck are not present in the object', ->
+      assert.isFalse jemima.matches {foo: 'bar'}, {foo: 'string', bar: 'function'}
+
+    test 'should return `false` when one or more properties in the object don\'t match the type specified in the duck', ->
+      assert.isFalse jemima.matches {foo: 'bar', bar: 'baz'}, {foo: 'string', bar: 'function'}
