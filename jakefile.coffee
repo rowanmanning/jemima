@@ -50,6 +50,10 @@ task 'test', ->
     complete()
 , async: true
 
+# CI
+desc 'This runs all tasks required for CI'
+task 'ci', ['lint', 'test']
+
 # Default task
 task 'default', ['build']
 
