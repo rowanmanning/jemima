@@ -3,6 +3,8 @@
 
 A naïve little (puddle) duck typing library for Node.js
 
+**NOTE: This project is no longer being maintained. If you're interested in taking over maintenance of this repo, please contact me.**
+
 [![Build Status][travis-status]][travis]
 
 
